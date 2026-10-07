@@ -9,7 +9,7 @@
   margin-bottom: 4px;
 }
 
-.pageTitle { font-size: 1.3rem; font-weight: 800; }
+.pageTitle { font-size: 1.3rem; font-weight: 800; color: var(--color-text); }
 .pageSub { font-size: 0.82rem; color: var(--color-text-muted); margin-top: 2px; }
 
 .filters {
@@ -31,26 +31,26 @@
   text-transform: uppercase;
   color: var(--color-text-muted);
   padding: 4px 0 2px;
-  border-bottom: 2px solid var(--color-accent);
+  border-bottom: 2px solid var(--color-border);
   margin-bottom: 2px;
 }
 
 /* ── Function Card (one per MFO name) ───────────────────── */
 .functionCard {
-  border: 1.5px solid var(--color-border);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: #fff;
+  background: var(--color-card-bg);
   box-shadow: var(--shadow-sm);
 }
 
 .functionHeader {
-  background: var(--color-accent);
+  background: var(--color-card-secondary);
   color: var(--color-text);
   font-weight: 800;
   font-size: 0.88rem;
   padding: 10px 16px;
-  border-bottom: 1.5px solid var(--color-accent-dark, #e6b800);
+  border-bottom: 1px solid var(--color-border);
 }
 
 /* ── Indicator list inside a function card ──────────────── */
@@ -66,11 +66,12 @@
   border-bottom: 1px solid var(--color-border);
   cursor: pointer;
   transition: background 0.12s;
+  background: var(--color-card-bg);
 }
 
 .mfoRow:last-child { border-bottom: none; }
 
-.mfoRow:hover { background: #fffce6; }
+.mfoRow:hover { background: var(--color-card-secondary); }
 
 .rowLeft {
   display: flex;
@@ -84,14 +85,14 @@
   font-size: 0.85rem;
   font-weight: 500;
   line-height: 1.45;
-  color: var(--color-text, #000);
+  color: var(--color-text);
   flex: 1;
 }
 
 .rowBtn {
   flex-shrink: 0;
   background: none;
-  border: 1.5px solid var(--color-border);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   padding: 5px 12px;
   font-size: 0.78rem;
@@ -102,19 +103,19 @@
 }
 
 .mfoRow:hover .rowBtn {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: #000;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-sidebar-text-active);
 }
 
 /* ── Modal ──────────────────────────────────────────────── */
 .modalMfo {
-  background: var(--color-surface);
+  background: var(--color-card-secondary);
   border-radius: var(--radius-sm);
   padding: 12px 14px;
   margin-bottom: 18px;
-  border-left: 4px solid var(--color-accent);
+  border: 1px solid var(--color-border);
 }
 
-.modalMfoName { font-weight: 700; font-size: 0.95rem; }
+.modalMfoName { font-weight: 700; font-size: 0.95rem; color: var(--color-text); }
 .modalIndicator { font-size: 0.8rem; color: var(--color-text-muted); margin-top: 4px; }

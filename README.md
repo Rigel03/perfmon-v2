@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PerfMon v2 — Unified Performance Monitoring System
+> **City Transport and Traffic Management Office (CTTMO)**  
+> Transport Planning and Management Division (TPMD) · Davao City Government
 
-## Getting Started
+PerfMon v2 is an enterprise-grade Progressive Web Application (PWA) designed for tracking, monitoring, and evaluating Individual Performance Commitment and Review (IPCR) records for both Plantilla regular personnel and Job Order / Contract of Service (JO/COS) officers.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Key Features
+
+* **Dual-Track Workflow Architecture**:
+  * **Plantilla Regular Officers**: Quarterly MFO commitment planning, target vs. actual monthly distributions (M1, M2, M3), variance reporting, and approval tracking.
+  * **JO/COS Officers**: Fast daily output tracking, quantitative accomplishment logs, and indicator metrics.
+* **Institutional Pathfinder Bento UI**:
+  * Clean, minimal bento-box card layouts with high-contrast typography adhering to WCAG AA/AAA standards.
+  * Adaptive Dark & Light themes with zero garish gradients or distracting drop shadows.
+  * Custom flat SVG positive mood avatars.
+* **Administrative Console**:
+  * Full employee roster management with division/section metadata.
+  * Major Final Output (MFO) definitions and individual assignment matrices.
+  * Performance indicator definitions.
+  * In-app user account creation, profile editing, and password updates synchronized with Supabase Auth.
+  * Review, endorse, and reject submissions with audit remarks.
+  * Excel (XLSX) and PDF report exports.
+* **Data Layer & Security**:
+  * Backed by PostgreSQL via Supabase with secure server-side API routes and Row-Level Security (RLS) support.
+
+---
+
+## 🛠 Tech Stack
+
+* **Framework**: [Next.js 16](https://nextjs.org/) (App Router, Turbopack)
+* **Language**: [TypeScript](https://www.typescriptlang.org/)
+* **Database & Auth**: [Supabase](https://supabase.com/) (PostgreSQL & Supabase Auth)
+* **Icons**: [@phosphor-icons/react](https://phosphoricons.com/)
+* **Animations**: [Framer Motion](https://www.framer.com/motion/)
+* **Export Utilities**: [xlsx](https://sheetjs.com/), [jspdf](https://github.com/parallax/jsPDF), [jspdf-autotable](https://github.com/simonbengtsson/jsPDF-AutoTable)
+
+---
+
+## ⚙️ Environment Variables
+
+Create a `.env.local` file in the root directory:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-publishable-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-secret-key
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📦 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Install dependencies
+```bash
+npm install
+```
 
-## Learn More
+### 2. Run local development server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Build for production
+```bash
+npm run build
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚢 Deployment (Vercel)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push this repository to GitHub.
+2. Import the project into [Vercel](https://vercel.com/new).
+3. Add the three environment variables under **Project Settings > Environment Variables**:
+   * `NEXT_PUBLIC_SUPABASE_URL`
+   * `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   * `SUPABASE_SERVICE_ROLE_KEY`
+4. Deploy. Build command: `npm run build`, Output directory: `.next`.
