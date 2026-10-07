@@ -2,7 +2,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getAllUsers, createUser, adminUpdateUser, deleteUserProfile } from '@/lib/db/users';
 import { getEmployees } from '@/lib/db/employees';
-import { Plus, Trash, PencilSimple, User, X, Check, Key, ShieldCheck } from '@phosphor-icons/react';
+import { Plus, Trash, PencilSimple, User, X, Check, Key, ShieldCheck, Eye, EyeSlash } from '@phosphor-icons/react';
 import type { Profile, Employee } from '@/types';
 
 export default function UsersAdminPage() {
@@ -40,6 +40,8 @@ export default function UsersAdminPage() {
     employeeId: '',
   });
   const [submitting, setSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showEditPassword, setShowEditPassword] = useState(false);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -164,14 +166,38 @@ export default function UsersAdminPage() {
             </div>
             <div className="form-group" style={{ marginBottom: 0 }}>
               <label className="form-label">Initial Password *</label>
-              <input
-                type="password"
-                placeholder="Password123!"
-                className="form-control"
-                value={form.password}
-                onChange={(e) => setForm({ ...form, password: e.target.value })}
-                required
-              />
+              <div style={{ position: 'relative' }}>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Password123!"
+                  className="form-control"
+                  style={{ paddingRight: 32 }}
+                  value={form.password}
+                  onChange={(e) => setForm({ ...form, password: e.target.value })}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    position: 'absolute',
+                    right: 8,
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    color: 'var(--color-text-muted)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                  title={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showPassword ? <EyeSlash size={15} /> : <Eye size={15} />}
+                </button>
+              </div>
             </div>
             <div className="form-group" style={{ marginBottom: 0 }}>
               <label className="form-label">Display Name</label>
@@ -270,13 +296,37 @@ export default function UsersAdminPage() {
               <label className="form-label">
                 New Password <span style={{ color: 'var(--color-text-muted)', fontWeight: 400 }}>(leave blank to keep)</span>
               </label>
-              <input
-                type="password"
-                placeholder="Enter to change password"
-                className="form-control"
-                value={editForm.password}
-                onChange={(e) => setEditForm({ ...editForm, password: e.target.value })}
-              />
+              <div style={{ position: 'relative' }}>
+                <input
+                  type={showEditPassword ? 'text' : 'password'}
+                  placeholder="Enter to change password"
+                  className="form-control"
+                  style={{ paddingRight: 32 }}
+                  value={editForm.password}
+                  onChange={(e) => setEditForm({ ...editForm, password: e.target.value })}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowEditPassword(!showEditPassword)}
+                  style={{
+                    position: 'absolute',
+                    right: 8,
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    color: 'var(--color-text-muted)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                  title={showEditPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showEditPassword ? <EyeSlash size={15} /> : <Eye size={15} />}
+                </button>
+              </div>
             </div>
             <div className="form-group" style={{ marginBottom: 0 }}>
               <label className="form-label">Display Name</label>
